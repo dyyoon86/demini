@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Demini - 코딩 몰라도 나만의 AI 앱 만들기</title>
+  <meta name="description" content="코딩 없이 Gemini AI한테 시켜서 나만의 앱을 만드세요. 무료, 3분 설치, 터미널 불필요.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            canvas: '#0A0A0B',
+            surface: '#141416',
+            inset: '#0F0F11',
+            line: '#222225',
+            line2: '#2B2B2F',
+            line3: '#3A3A3F',
+            fg: '#ECEAE6',
+            fg2: '#C7C5C0',
+            muted: '#8B8A86',
+            subtle: '#69696A',
+            faint: '#4D4D4C',
+            accent: '#FF5C38',
+            'accent-fg': '#FF8A6B',
+            success: '#34C759',
+            danger: '#FF453A',
+          },
+          fontFamily: {
+            sans: ['ui-sans-serif', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'Malgun Gothic', 'Apple SD Gothic Neo', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    ::selection { background-color: #FF5C38; color: #0A0A0B; }
+    .text-gradient { background: linear-gradient(135deg, #FF5C38, #FF8A6B); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
+    .animate-pulse { animation: pulse 1s infinite; }
+  </style>
+</head>
+<body class="min-h-screen bg-canvas text-fg antialiased">
+
+  <!-- Hero -->
+  <section class="relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-b from-accent/5 to-transparent pointer-events-none"></div>
+    <div class="relative max-w-5xl mx-auto px-5 pt-20 pb-24 text-center">
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-line2 text-xs text-muted mb-8">
+        <span class="w-1.5 h-1.5 rounded-full bg-success animate-pulse"></span>
+        완전 무료 · API 키 불필요
+      </div>
+      <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight leading-tight mb-6">
+        코딩 몰라도<br>
+        <span class="text-gradient">나만의 AI 앱</span>을<br>
+        만드세요
+      </h1>
+      <p class="text-lg md:text-xl text-muted max-w-2xl mx-auto mb-10 leading-relaxed">
+        터미널도, 코드도, 개발자 도구도 필요 없습니다.<br>
+        그냥 하고 싶은 말만 AI한테 전달하세요.
+      </p>
+      <a href="#download" class="inline-flex items-center gap-2 px-8 py-4 bg-accent text-canvas font-bold text-lg rounded-xl hover:brightness-105 transition-all">
+        무료로 시작하기 →
+      </a>
+      <p class="text-sm text-subtle mt-4">Windows 7/10/11 · 30초 설치</p>
+    </div>
+  </section>
+
+  <!-- Problem -->
+  <section class="border-t border-line bg-surface/50">
+    <div class="max-w-5xl mx-auto px-5 py-20">
+      <h2 class="text-2xl md:text-3xl font-bold text-center mb-12">이런 경험 있으신가요?</h2>
+      <div class="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+        <div class="flex items-start gap-3 p-5 rounded-2xl bg-surface border border-line">
+          <span class="text-danger text-lg font-bold shrink-0">✗</span>
+          <span class="text-fg2">코드를 배워야 한다고 생각했는데...</span>
+        </div>
+        <div class="flex items-start gap-3 p-5 rounded-2xl bg-surface border border-line">
+          <span class="text-danger text-lg font-bold shrink-0">✗</span>
+          <span class="text-fg2">터미널 화면이 무서워서 시작도 못 했고...</span>
+        </div>
+        <div class="flex items-start gap-3 p-5 rounded-2xl bg-surface border border-line">
+          <span class="text-danger text-lg font-bold shrink-0">✗</span>
+          <span class="text-fg2">API 키? 설정? 어디서부터 해야 할지...</span>
+        </div>
+        <div class="flex items-start gap-3 p-5 rounded-2xl bg-surface border border-line">
+          <span class="text-danger text-lg font-bold shrink-0">✗</span>
+          <span class="text-fg2">유튜브 보며 따라 했는데 에러만 계속...</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Solution -->
+  <section class="border-t border-line">
+    <div class="max-w-5xl mx-auto px-5 py-20">
+      <div class="text-center mb-14">
+        <span class="text-xs uppercase tracking-widest text-accent font-semibold mb-3 block">Solution</span>
+        <h2 class="text-2xl md:text-3xl font-bold mb-4">Demini가 뭔가요?</h2>
+        <p class="text-muted max-w-xl mx-auto">코딩 없이 AI한테 시켜서 만드는 나만의 윈도우 앱</p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="p-6 rounded-2xl bg-surface border border-line hover:border-line3 transition-colors">
+          <div class="text-3xl mb-4">🤖</div>
+          <h3 class="font-bold text-fg mb-2">AI가 코드를 짜줍니다</h3>
+          <p class="text-sm text-muted leading-relaxed">Gemini AI가 프롬프트만으로 코드를 생성합니다. 코딩 지식 불필요.</p>
+        </div>
+        <div class="p-6 rounded-2xl bg-surface border border-line hover:border-line3 transition-colors">
+          <div class="text-3xl mb-4">🖥️</div>
+          <h3 class="font-bold text-fg mb-2">터미널 없이 창에서만</h3>
+          <p class="text-sm text-muted leading-relaxed">명령어 칠 필요 없습니다. 앱 창에서 입력하고 결과만 확인하세요.</p>
+        </div>
+        <div class="p-6 rounded-2xl bg-surface border border-line hover:border-line3 transition-colors">
+          <div class="text-3xl mb-4">📦</div>
+          <h3 class="font-bold text-fg mb-2">실행하면 자동 설치</h3>
+          <p class="text-sm text-muted leading-relaxed">Gemini CLI가 없으면 앱이 자동으로 설치합니다. 클릭 한 번이면 끝.</p>
+        </div>
+        <div class="p-6 rounded-2xl bg-surface border border-line hover:border-line3 transition-colors">
+          <div class="text-3xl mb-4">💰</div>
+          <h3 class="font-bold text-fg mb-2">완전 무료</h3>
+          <p class="text-sm text-muted leading-relaxed">구독도, API 키도 없습니다. 무료 티어로 무제한 사용.</p>
+        </div>
+        <div class="p-6 rounded-2xl bg-surface border border-line hover:border-line3 transition-colors">
+          <div class="text-3xl mb-4">🇰🇷</div>
+          <h3 class="font-bold text-fg mb-2">한국어 완벽 지원</h3>
+          <p class="text-sm text-muted leading-relaxed">프롬프트도 한국어로 입력하세요. 결과도 한국어로 나옵니다.</p>
+        </div>
+        <div class="p-6 rounded-2xl bg-surface border border-line hover:border-line3 transition-colors">
+          <div class="text-3xl mb-4">⚡</div>
+          <h3 class="font-bold text-fg mb-2">3분이면 충분</h3>
+          <p class="text-sm text-muted leading-relaxed">앱 실행 → 입력 → 코드 생성. 이 3단계면 끝입니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section class="border-t border-line bg-surface/50">
+    <div class="max-w-5xl mx-auto px-5 py-20">
+      <div class="text-center mb-14">
+        <span class="text-xs uppercase tracking-widest text-accent font-semibold mb-3 block">How it works</span>
+        <h2 class="text-2xl md:text-3xl font-bold mb-4">이렇게 쉬워요</h2>
+      </div>
+      <div class="max-w-2xl mx-auto space-y-8">
+        <div class="flex gap-6 items-start">
+          <div class="shrink-0 w-14 h-14 rounded-2xl bg-accent/10 border border-accent/30 flex items-center justify-center">
+            <span class="text-accent font-bold text-lg">01</span>
+          </div>
+          <div>
+            <h3 class="font-bold text-lg text-fg mb-1">앱을 실행하세요</h3>
+            <p class="text-muted leading-relaxed">다운로드 후 앱을 켜면 Gemini CLI를 자동으로 설치합니다. (최초 1회, 1~3분)</p>
+          </div>
+        </div>
+        <div class="flex gap-6 items-start">
+          <div class="shrink-0 w-14 h-14 rounded-2xl bg-accent/10 border border-accent/30 flex items-center justify-center">
+            <span class="text-accent font-bold text-lg">02</span>
+          </div>
+          <div>
+            <h3 class="font-bold text-lg text-fg mb-1">하고 싶은 말을 입력하세요</h3>
+            <p class="text-muted leading-relaxed">예: "버튼 만들어줘", "이미지 생성기 만들어줘", "번역기 웹 페이지 만들어줘"</p>
+          </div>
+        </div>
+        <div class="flex gap-6 items-start">
+          <div class="shrink-0 w-14 h-14 rounded-2xl bg-accent/10 border border-accent/30 flex items-center justify-center">
+            <span class="text-accent font-bold text-lg">03</span>
+          </div>
+          <div>
+            <h3 class="font-bold text-lg text-fg mb-1">코드가 완성됩니다</h3>
+            <p class="text-muted leading-relaxed">AI가 코드를 짜줍니다. 복사해서 저장하면 나만의 앱 완성!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Examples -->
+  <section class="border-t border-line">
+    <div class="max-w-5xl mx-auto px-5 py-20">
+      <div class="text-center mb-14">
+        <span class="text-xs uppercase tracking-widest text-accent font-semibold mb-3 block">Example</span>
+        <h2 class="text-2xl md:text-3xl font-bold mb-4">이런 걸 만들 수 있어요</h2>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+        <div class="p-6 rounded-2xl bg-surface border border-line text-center hover:border-line3 transition-colors">
+          <div class="text-4xl mb-3">🎨</div>
+          <h3 class="font-bold text-fg mb-1">AI 이미지 생성기</h3>
+          <p class="text-sm text-muted">텍스트 입력하면 이미지 생성</p>
+        </div>
+        <div class="p-6 rounded-2xl bg-surface border border-line text-center hover:border-line3 transition-colors">
+          <div class="text-4xl mb-3">📝</div>
+          <h3 class="font-bold text-fg mb-1">한영 번역기</h3>
+          <p class="text-sm text-muted">문장 입력하면 자동 번역</p>
+        </div>
+        <div class="p-6 rounded-2xl bg-surface border border-line text-center hover:border-line3 transition-colors">
+          <div class="text-4xl mb-3">📊</div>
+          <h3 class="font-bold text-fg mb-1">가계부 앱</h3>
+          <p class="text-sm text-muted">수입/지출 기록하고 차트로 보기</p>
+        </div>
+        <div class="p-6 rounded-2xl bg-surface border border-line text-center hover:border-line3 transition-colors">
+          <div class="text-4xl mb-3">🎯</div>
+          <h3 class="font-bold text-fg mb-1">투두 리스트</h3>
+          <p class="text-sm text-muted">할 일 추가하고 완료 체크</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="download" class="border-t border-line bg-surface/50">
+    <div class="max-w-3xl mx-auto px-5 py-24 text-center">
+      <h2 class="text-3xl md:text-4xl font-extrabold mb-4">지금 바로 시작하세요</h2>
+      <p class="text-muted text-lg mb-10 max-w-lg mx-auto">코딩 몰라도 됩니다. 그냥 다운로드하고, 입력하고, 결과 받으세요.</p>
+      <a href="https://github.com/dyyoon86/demini/releases" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 px-10 py-5 bg-accent text-canvas font-bold text-xl rounded-2xl hover:brightness-105 transition-all shadow-lg shadow-accent/20">
+        무료 다운로드 (Windows)
+      </a>
+      <div class="mt-6 flex items-center justify-center gap-6 text-sm text-subtle">
+        <span>✓ 무료</span>
+        <span>✓ 30초 설치</span>
+        <span>✓ API 키 불필요</span>
+      </div>
+      <div class="mt-10 p-5 rounded-2xl bg-inset border border-line max-w-md mx-auto">
+        <p class="text-xs text-muted mb-2">처음이신가요? 영상 가이드를 보세요</p>
+        <a href="https://www.youtube.com/@todotv" target="_blank" rel="noopener noreferrer" class="text-accent text-sm font-semibold hover:underline">
+          투두TV 채널에서 영상 보기 →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-line">
+    <div class="max-w-5xl mx-auto px-5 py-8 text-center text-sm text-subtle">
+      <p>Demini · 코딩 몰라도 나만의 AI 앱 만들기 · MIT License</p>
+    </div>
+  </footer>
+
+</body>
+</html>
