@@ -1,6 +1,6 @@
 {
   "name": "dogem",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "DoGem - 코딩 몰라도 AI한테 시켜서 만드는 나만의 페이지 (Gemini CLI Windows App)",
   "main": "main.js",
   "author": "dyyoon86",
@@ -14,6 +14,9 @@
     "build": "electron-builder --win --x64 --publish never",
     "build:dir": "electron-builder --win --dir"
   },
+  "dependencies": {
+    "electron-updater": "^6.3.9"
+  },
   "devDependencies": {
     "electron": "^28.0.0",
     "electron-builder": "^24.0.0"
@@ -26,10 +29,14 @@
       "output": "dist",
       "buildResources": "build"
     },
+    "publish": [
+      { "provider": "github", "owner": "dyyoon86", "repo": "demini" }
+    ],
     "files": [
       "main.js",
       "index.html",
-      "build/icon.ico"
+      "build/icon.ico",
+      "node_modules/**/*"
     ],
     "win": {
       "target": [

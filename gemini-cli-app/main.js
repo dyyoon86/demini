@@ -4,6 +4,10 @@ const path = require('path');
 const fs = require('fs');
 const os = require('os');
 
+// 자동 업데이트(GitHub Releases) — 설치형에서 동작
+let autoUpdater = null;
+try { autoUpdater = require('electron-updater').autoUpdater; } catch (e) {}
+
 let mainWindow;
 let geminiReady = false;
 let installStatus = 'checking'; // checking | installing | ready | error | need-login
@@ -169,10 +173,27 @@ ipcMain.handle('check-node', async () => new Promise((resolve) => {
     resolve(err ? { installed: false } : { installed: true, version: stdout.trim() }));
 }));
 
+// ── 자동 업데이트 ──
+function setupAutoUpdate() {
+  if (!autoUpdater || !app.isPackaged) return; // 개발 모드/미지원이면 스킵
+  autoUpdater.autoDownload = true;
+  autoUpdater.autoInstallOnAppQuit = true;
+  autoUpdater.on('update-available', (info) =>
+    mainWindow?.webContents.send('update', { state: 'available', version: info?.version }));
+  autoUpdater.on('download-progress', (p) =>
+    mainWindow?.webContents.send('update', { state: 'downloading', percent: Math.round(p.percent || 0) }));
+  autoUpdater.on('update-downloaded', (info) =>
+    mainWindow?.webContents.send('update', { state: 'ready', version: info?.version }));
+  autoUpdater.on('error', () => {}); // 조용히 무시(오프라인 등)
+  autoUpdater.checkForUpdates().catch(() => {});
+}
+ipcMain.handle('apply-update', () => { try { autoUpdater?.quitAndInstall(); } catch (e) {} });
+
 app.whenReady().then(() => {
   ensureWorkDir();
   createWindow();
   checkAndInstallGemini();
+  setupAutoUpdate();
 });
 
 app.on('window-all-closed', () => { if (process.platform !== 'darwin') app.quit(); });

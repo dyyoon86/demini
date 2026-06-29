@@ -92,6 +92,12 @@
     </div>
   </div>
 
+  <!-- 자동 업데이트 배너 -->
+  <div id="update-bar" style="display:none; align-items:center; gap:12px; padding:10px 20px; background:#0e3a2e; border-top:1px solid #16a34a; color:#bbf7d0; font-size:.85rem;">
+    <span id="update-msg">새 버전을 받는 중...</span>
+    <button id="update-btn" onclick="applyUpdate()" style="display:none; margin-left:auto; padding:6px 14px; background:#22c55e; color:#06281c; border:none; border-radius:6px; font-weight:700; cursor:pointer;">재시작하여 업데이트</button>
+  </div>
+
   <div class="input-box">
     <span class="prompt-symbol">❯</span>
     <input type="text" id="input" placeholder="만들고 싶은 페이지를 입력하세요 (예: 계산기 페이지 만들어줘)" autofocus />
@@ -172,6 +178,18 @@
     async function openInBrowser() { if (lastSavedPath) await ipcRenderer.invoke('open-path', lastSavedPath); }
     async function openFolder() { await ipcRenderer.invoke('open-folder'); }
     function useExample(text) { if (sendBtn.disabled || isProcessing) return; input.value = text; send(); }
+
+    // 자동 업데이트 배너
+    const updateBar = document.getElementById('update-bar');
+    const updateMsg = document.getElementById('update-msg');
+    const updateBtn = document.getElementById('update-btn');
+    ipcRenderer.on('update', (e, u) => {
+      updateBar.style.display = 'flex';
+      if (u.state === 'available') { updateMsg.textContent = '🆕 새 버전 발견! 자동으로 받는 중...'; updateBtn.style.display = 'none'; }
+      else if (u.state === 'downloading') { updateMsg.textContent = `새 버전 다운로드 중... ${u.percent || 0}%`; updateBtn.style.display = 'none'; }
+      else if (u.state === 'ready') { updateMsg.textContent = `✅ 새 버전(${u.version || ''}) 준비 완료!`; updateBtn.style.display = 'inline-block'; }
+    });
+    async function applyUpdate() { await ipcRenderer.invoke('apply-update'); }
 
     input.addEventListener('keydown', (e) => { if (e.key === 'Enter' && !sendBtn.disabled && !isProcessing) send(); });
 
