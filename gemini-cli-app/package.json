@@ -1,6 +1,6 @@
 {
   "name": "dogem",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "DoGem - 코딩 몰라도 AI한테 시켜서 만드는 나만의 페이지 (Gemini CLI Windows App)",
   "main": "main.js",
   "author": "dyyoon86",
@@ -33,12 +33,16 @@
     ],
     "win": {
       "target": [
+        { "target": "portable", "arch": ["x64"] },
         { "target": "nsis", "arch": ["x64"] }
       ],
-      "icon": "build/icon.ico",
-      "artifactName": "DoGem-Setup-${version}.${ext}"
+      "icon": "build/icon.ico"
+    },
+    "portable": {
+      "artifactName": "DoGem-Portable-${version}.${ext}"
     },
     "nsis": {
+      "artifactName": "DoGem-Setup-${version}.${ext}",
       "oneClick": false,
       "perMachine": false,
       "allowToChangeInstallationDirectory": true,

@@ -57,7 +57,10 @@ HTML로 버튼 만들어줘
 
 ## 다운로드 (일반 사용자)
 
-코딩 몰라도 됩니다 — [**Releases**](https://github.com/dyyoon86/demini/releases)에서 `DoGem-Setup-x.x.x.exe`를 받아 설치만 하면 끝.
+코딩 몰라도 됩니다 — [**Releases**](https://github.com/dyyoon86/demini/releases)에서 받으세요.
+
+- **`DoGem-Portable-x.x.x.exe`** — 설치 없이 **더블클릭하면 바로 실행** (추천, 제일 간편)
+- `DoGem-Setup-x.x.x.exe` — 설치형(바탕화면 바로가기 생성)
 
 ## 직접 빌드 (개발자)
 
