@@ -8,8 +8,8 @@ let mainWindow;
 let geminiReady = false;
 let installStatus = 'checking'; // checking | installing | ready | error | need-login
 
-// 생성된 페이지가 저장될 작업 폴더 (문서/Demini작품)
-const WORK_DIR = path.join(os.homedir(), 'Documents', 'Demini작품');
+// 생성된 페이지가 저장될 작업 폴더 (문서/DoGem작품)
+const WORK_DIR = path.join(os.homedir(), 'Documents', 'DoGem작품');
 function ensureWorkDir() {
   try { fs.mkdirSync(WORK_DIR, { recursive: true }); } catch (e) {}
   return WORK_DIR;
@@ -20,7 +20,7 @@ function createWindow() {
     width: 1100,
     height: 760,
     minWidth: 820,
-    title: 'Demini - 코딩 몰라도 나만의 페이지',
+    title: 'DoGem - 코딩 몰라도 나만의 페이지',
     backgroundColor: '#0f172a',
     webPreferences: { nodeIntegration: true, contextIsolation: false },
   });

@@ -63,7 +63,7 @@ export default function FunnelPage() {
               Solution
             </span>
             <h2 className="text-2xl md:text-3xl font-bold mb-4">
-              Demini가 뭔가요?
+              DoGem가 뭔가요?
             </h2>
             <p className="text-muted max-w-xl mx-auto">
               코딩 없이 AI한테 시켜서 만드는 나만의 윈도우 앱
@@ -231,7 +231,7 @@ export default function FunnelPage() {
       {/* Footer */}
       <footer className="border-t border-line">
         <div className="max-w-5xl mx-auto px-5 py-8 text-center text-sm text-subtle">
-          <p>Demini · 코딩 몰라도 나만의 AI 앱 만들기 · MIT License</p>
+          <p>DoGem · 코딩 몰라도 나만의 AI 앱 만들기 · MIT License</p>
         </div>
       </footer>
     </main>
