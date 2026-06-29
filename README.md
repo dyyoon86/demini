@@ -55,6 +55,29 @@ HTML로 버튼 만들어줘
 한국어 번역기 웹 페이지 만들어줘
 ```
 
+## 다운로드 (일반 사용자)
+
+코딩 몰라도 됩니다 — [**Releases**](https://github.com/dyyoon86/demini/releases)에서 `DoGem-Setup-x.x.x.exe`를 받아 설치만 하면 끝.
+
+## 직접 빌드 (개발자)
+
+```bash
+cd gemini-cli-app
+npm install
+npm run build      # dist/DoGem-Setup-x.x.x.exe 생성 (윈도우)
+```
+
+## 배포 (자동)
+
+GitHub Actions가 윈도우 설치 파일을 자동으로 만들어 Release에 올립니다.
+
+```bash
+git tag v1.0.0
+git push origin v1.0.0   # → CI가 .exe 빌드 후 v1.0.0 Release에 첨부
+```
+
+(Actions 탭에서 수동 실행 시 빌드 결과를 artifact로도 받을 수 있습니다.)
+
 ## 영상 가이드
 
 투두TV 채널의 영상 "코딩 몰라도 나만의 페이지 만들기"에서 사용하는 래퍼 앱입니다.

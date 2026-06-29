@@ -1,16 +1,48 @@
 {
   "name": "dogem",
   "version": "1.0.0",
-  "description": "Gemini CLI Windows App wrapper",
+  "description": "DoGem - 코딩 몰라도 AI한테 시켜서 만드는 나만의 페이지 (Gemini CLI Windows App)",
   "main": "main.js",
+  "author": "dyyoon86",
+  "license": "MIT",
   "scripts": {
     "start": "electron .",
-    "build": "electron-builder --win --x64"
-  },
-  "dependencies": {
-    "electron": "^28.0.0"
+    "build": "electron-builder --win --x64",
+    "build:dir": "electron-builder --win --dir"
   },
   "devDependencies": {
+    "electron": "^28.0.0",
     "electron-builder": "^24.0.0"
+  },
+  "build": {
+    "appId": "com.dyyoon86.dogem",
+    "productName": "DoGem",
+    "copyright": "Copyright © 2026 dyyoon86",
+    "directories": {
+      "output": "dist",
+      "buildResources": "build"
+    },
+    "files": [
+      "main.js",
+      "index.html",
+      "build/icon.ico"
+    ],
+    "win": {
+      "target": [
+        { "target": "nsis", "arch": ["x64"] }
+      ],
+      "icon": "build/icon.ico",
+      "artifactName": "DoGem-Setup-${version}.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "DoGem",
+      "installerLanguages": ["ko-KR"],
+      "language": "1042"
+    }
   }
 }
