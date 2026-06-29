@@ -40,6 +40,10 @@
     button#send:disabled { opacity:.4; cursor:not-allowed; }
     .welcome { color:#64748b; text-align:center; margin-top:40px; line-height:1.8; }
     .welcome h2 { color:#e2e8f0; margin-bottom:12px; }
+    .ex-label { color:#475569; font-size:.8rem; margin:18px 0 10px; }
+    .ex-chips { display:flex; flex-wrap:wrap; gap:8px; justify-content:center; }
+    .ex-chip { padding:8px 14px; border:1px solid #334155; background:#1e293b; color:#cbd5e1; border-radius:999px; font-size:.82rem; cursor:pointer; transition:all .15s; }
+    .ex-chip:hover { border-color:#38bdf8; color:#e2e8f0; background:#243044; }
     .install-overlay { position:fixed; inset:0; background:rgba(15,23,42,.95); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:18px; z-index:100; }
     .install-overlay.hidden { display:none; }
     .spinner { width:40px; height:40px; border:3px solid #334155; border-top-color:#38bdf8; border-radius:50%; animation:spin .8s linear infinite; }
@@ -64,7 +68,17 @@
       <div class="welcome">
         <h2>환영합니다 👋</h2>
         <p>만들고 싶은 걸 한국어로 말해보세요.<br>오른쪽에 결과 페이지가 바로 떠요.</p>
-        <p style="margin-top:14px;color:#475569">예: "한국어 번역기 페이지 만들어줘"</p>
+        <div class="ex-label">👇 눌러서 바로 만들어보기</div>
+        <div class="ex-chips">
+          <span class="ex-chip" onclick="useExample('계산기 페이지 만들어줘')">🧮 계산기</span>
+          <span class="ex-chip" onclick="useExample('한국어를 영어로 바꿔주는 번역기 페이지 만들어줘')">📝 번역기</span>
+          <span class="ex-chip" onclick="useExample('Pollinations.ai API를 쓰는 AI 이미지 생성기 페이지 만들어줘')">🎨 이미지 생성기</span>
+          <span class="ex-chip" onclick="useExample('할 일을 추가하고 체크하는 투두리스트 페이지 만들어줘')">✅ 투두리스트</span>
+          <span class="ex-chip" onclick="useExample('수입과 지출을 기록하고 합계를 보여주는 가계부 페이지 만들어줘')">💰 가계부</span>
+          <span class="ex-chip" onclick="useExample('시작/정지/리셋 되는 타이머 페이지 만들어줘')">⏱️ 타이머</span>
+          <span class="ex-chip" onclick="useExample('이름을 넣으면 예쁜 생일 축하 페이지 만들어줘')">🎂 생일축하</span>
+          <span class="ex-chip" onclick="useExample('QR코드를 만들어주는 페이지 만들어줘')">🔳 QR코드</span>
+        </div>
       </div>
     </div>
     <div class="preview">
@@ -157,6 +171,7 @@
     }
     async function openInBrowser() { if (lastSavedPath) await ipcRenderer.invoke('open-path', lastSavedPath); }
     async function openFolder() { await ipcRenderer.invoke('open-folder'); }
+    function useExample(text) { if (sendBtn.disabled || isProcessing) return; input.value = text; send(); }
 
     input.addEventListener('keydown', (e) => { if (e.key === 'Enter' && !sendBtn.disabled && !isProcessing) send(); });
 
