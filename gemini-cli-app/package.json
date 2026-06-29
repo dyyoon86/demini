@@ -5,9 +5,13 @@
   "main": "main.js",
   "author": "dyyoon86",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dyyoon86/demini.git"
+  },
   "scripts": {
     "start": "electron .",
-    "build": "electron-builder --win --x64",
+    "build": "electron-builder --win --x64 --publish never",
     "build:dir": "electron-builder --win --dir"
   },
   "devDependencies": {
